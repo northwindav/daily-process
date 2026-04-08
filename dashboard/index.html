@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Canada Fire Weather Briefing</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Daily situational awareness</p>
+      <h1>Canada Fire Weather Briefing</h1>
+      <p class="subtitle">
+        A one-click morning dashboard for broad weather, national alerts, wildfire status,
+        and notable fire-related news.
+      </p>
+    </div>
+    <div class="hero-actions">
+      <button id="open-core" class="btn btn-primary">Open core sources</button>
+      <button id="open-regional" class="btn btn-secondary">Open regional follow-up</button>
+      <p class="small-note">If your browser blocks pop-ups, allow them once for this local page.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="status-strip">
+      <div class="status-pill">Mode: static local MVP</div>
+      <div id="data-status" class="status-pill">Loading source list…</div>
+      <div class="status-pill">Opened: <span id="generated-at">—</span></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <h2>Morning workflow (5–10 minutes)</h2>
+        <p>Use this sequence to stay broad, fast, and consistent.</p>
+      </div>
+      <ol id="checklist" class="checklist"></ol>
+    </section>
+
+    <section class="summary-grid" aria-label="dashboard summary">
+      <article class="summary-card">
+        <span id="weather-count" class="summary-value">0</span>
+        <span class="summary-label">Weather sources</span>
+      </article>
+      <article class="summary-card">
+        <span id="alerts-count" class="summary-value">0</span>
+        <span class="summary-label">Alert sources</span>
+      </article>
+      <article class="summary-card">
+        <span id="wildfire-count" class="summary-value">0</span>
+        <span class="summary-label">Wildfire sources</span>
+      </article>
+      <article class="summary-card">
+        <span id="news-count" class="summary-value">0</span>
+        <span class="summary-label">News sources</span>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <h2>Weather overview</h2>
+        <p>Orient first to the national pattern, hot/dry/windy areas, and active convection.</p>
+      </div>
+      <div id="weather-sources" class="source-grid"></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <h2>Alerts / warnings</h2>
+        <p>Check official watches, warnings, and special weather statements before drilling deeper.</p>
+      </div>
+      <div id="alerts-sources" class="source-grid"></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <h2>Wildfire status</h2>
+        <p>Use national fire products first, then provincial or territorial follow-up if needed.</p>
+      </div>
+      <div id="wildfire-sources" class="source-grid"></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <h2>News in the last 24 hours</h2>
+        <p>Skim for evacuations, smoke impacts, major new fires, and changing public messaging.</p>
+      </div>
+      <div class="news-live">
+        <div class="section-heading compact">
+          <h3>Latest filtered wildfire headlines</h3>
+          <p id="news-meta">Loading recent headlines…</p>
+        </div>
+        <p id="headlines-status" class="news-status">Checking recent RSS items…</p>
+        <ul id="headline-list" class="headline-list"></ul>
+      </div>
+      <div id="news-sources" class="source-grid"></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <h2>Regional follow-up</h2>
+        <p>Open these only when the national picture suggests a closer regional look is warranted.</p>
+      </div>
+      <div id="regional-sources" class="source-grid"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>
+      Source links are maintained in <code>config/sources.json</code>. If the dashboard is opened as a local file,
+      it automatically falls back to a built-in copy of the same source list.
+    </p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
