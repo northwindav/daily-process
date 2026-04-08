@@ -18,7 +18,22 @@ Double-click:
 
 - `start_briefing.bat`
 
+This now hands off to `start_briefing.ps1`, which is more reliable for keeping the local Python server and news refresher running in the background on Windows.
+
+You can also run it directly from PowerShell:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\start_briefing.ps1
+```
+
 > If `Open core sources` or `Open regional follow-up` only opens one tab in Edge, allow pop-ups for `127.0.0.1:8765` (or the local dashboard page) and try again. This has been confirmed to resolve the issue in Edge.
+
+If the local Windows launch ever fails again, check these logs:
+
+- `%TEMP%\fire-weather-briefing\server.out.log`
+- `%TEMP%\fire-weather-briefing\server.err.log`
+- `%TEMP%\fire-weather-briefing\rss_fetch.log`
+- `%TEMP%\fire-weather-briefing\goes_fetch.log`
 
 ### Ubuntu
 

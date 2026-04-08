@@ -1,27 +1,19 @@
 @echo off
 setlocal
 cd /d "%~dp0"
-set "PORT=8765"
 
-where py >nul 2>&1
-if %errorlevel%==0 (
-  py scripts\fetch_rss.py >nul 2>&1
-  py scripts\fetch_goes_page.py >nul 2>&1
-  start "Fire Weather Briefing News Refresh" /min py scripts\refresh_news_loop.py >nul 2>&1
-  start "Fire Weather Briefing Server" /min py -m http.server %PORT% >nul 2>&1
-  start "" "http://127.0.0.1:%PORT%/dashboard/index.html"
-  exit /b 0
+set "POWERSHELL_EXE=%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe"
+if exist "%POWERSHELL_EXE%" (
+  "%POWERSHELL_EXE%" -NoProfile -ExecutionPolicy Bypass -File "%~dp0start_briefing.ps1"
+  exit /b %errorlevel%
 )
 
-where python >nul 2>&1
+where pwsh >nul 2>&1
 if %errorlevel%==0 (
-  python scripts\fetch_rss.py >nul 2>&1
-  python scripts\fetch_goes_page.py >nul 2>&1
-  start "Fire Weather Briefing News Refresh" /min python scripts\refresh_news_loop.py >nul 2>&1
-  start "Fire Weather Briefing Server" /min python -m http.server %PORT% >nul 2>&1
-  start "" "http://127.0.0.1:%PORT%/dashboard/index.html"
-  exit /b 0
+  pwsh -NoProfile -ExecutionPolicy Bypass -File "%~dp0start_briefing.ps1"
+  exit /b %errorlevel%
 )
 
+echo PowerShell was not found. Opening the static dashboard page without the local server.
 start "" "%CD%\dashboard\index.html"
 exit /b 0
