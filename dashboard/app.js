@@ -13,7 +13,7 @@ const FALLBACK_DATA = {
       region: "North America",
       label: "GOES IR composite",
       url: "goes_ir_configured.html",
-      description: "Configured GOES IR loop showing roughly the last 3 hours at a faster animation speed.",
+      description: "Configured GOES IR loop showing roughly the last 6 hours at a moderately faster animation speed.",
       why: "Fast first-look satellite view for Canada and surrounding upstream weather, pre-tuned for morning scanning."
     },
     {
@@ -252,6 +252,8 @@ const EMPTY_NEWS_DATA = {
   items: []
 };
 
+const HEADLINE_REFRESH_MS = 30 * 60 * 1000;
+
 async function loadData() {
   if (window.location.protocol === "file:") {
     return { ...FALLBACK_DATA, loadedFrom: "fallback" };
@@ -348,23 +350,47 @@ function updateCounts(sources) {
   document.getElementById("news-count").textContent = counts.news;
 }
 
-function openSources(sources, predicate) {
+function updateOpenedStatus(label, openedCount, requestedCount) {
+  const status = document.getElementById("generated-at");
+
+  if (!status) {
+    return;
+  }
+
+  const timestamp = new Date().toLocaleTimeString();
+
+  status.textContent =
+    openedCount === requestedCount
+      ? `${label}: ${openedCount}/${requestedCount} tabs at ${timestamp}`
+      : `${label}: ${openedCount}/${requestedCount} tabs at ${timestamp} — allow pop-ups for this page if needed`;
+}
+
+function openSources(sources, predicate, label) {
   const selected = sources.filter(predicate);
+  let openedCount = 0;
 
   selected.forEach((source, index) => {
-    window.setTimeout(() => {
-      window.open(source.url, "_blank", "noopener,noreferrer");
-    }, index * 80);
+    const popup = window.open("about:blank", `briefing-tab-${label}-${index}`);
+
+    if (!popup) {
+      return;
+    }
+
+    popup.opener = null;
+    popup.location.replace(source.url);
+    openedCount += 1;
   });
+
+  updateOpenedStatus(label, openedCount, selected.length);
 }
 
 function setupButtons(sources) {
   document.getElementById("open-core").addEventListener("click", () =>
-    openSources(sources, (source) => source.category === "weather")
+    openSources(sources, (source) => source.category === "weather", "Core")
   );
 
   document.getElementById("open-regional").addEventListener("click", () =>
-    openSources(sources, (source) => source.group === "regional")
+    openSources(sources, (source) => source.group === "regional", "Regional")
   );
 }
 
@@ -483,7 +509,7 @@ function renderHeadlines(newsData) {
     .slice(0, 12);
 
   if (newsData.loadedFrom === "json" && newsData.generatedAt) {
-    meta.textContent = `Last RSS refresh: ${new Date(newsData.generatedAt).toLocaleString()}`;
+    meta.textContent = `Last RSS refresh: ${new Date(newsData.generatedAt).toLocaleString()} · auto-refresh every 30 min while open`;
   } else if (newsData.loadedFrom === "file") {
     meta.textContent = "Live headlines appear when you launch the dashboard through the one-click script.";
   } else {
@@ -555,4 +581,9 @@ window.addEventListener("DOMContentLoaded", async () => {
   updateCounts(data.sources);
   setupButtons(data.sources);
   updateStatus(data);
+
+  window.setInterval(async () => {
+    const latestHeadlines = await loadHeadlines();
+    renderHeadlines(latestHeadlines);
+  }, HEADLINE_REFRESH_MS);
 });

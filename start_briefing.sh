@@ -11,6 +11,7 @@ if command -v python3 >/dev/null 2>&1; then
     cd "${BASE_DIR}"
     python3 scripts/fetch_rss.py >/dev/null 2>&1 || true
     python3 scripts/fetch_goes_page.py >/dev/null 2>&1 || true
+    nohup python3 scripts/refresh_news_loop.py >/dev/null 2>&1 &
     nohup python3 -m http.server "${PORT}" >/dev/null 2>&1 &
   )
   xdg-open "${URL}" >/dev/null 2>&1 || printf 'Open this URL in a browser: %s\n' "${URL}"

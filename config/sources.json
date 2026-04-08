@@ -14,7 +14,7 @@
       "region": "North America",
       "label": "GOES IR composite",
       "url": "goes_ir_configured.html",
-      "description": "Configured GOES IR loop showing roughly the last 3 hours at a faster animation speed.",
+      "description": "Configured GOES IR loop showing roughly the last 6 hours at a moderately faster animation speed.",
       "why": "Fast first-look satellite view for Canada and surrounding upstream weather, pre-tuned for morning scanning."
     },
     {
