@@ -1,14 +1,22 @@
-# Canada Fire Weather Briefing MVP
+# Canada National Fire Weather Dashboard
 
-This workspace contains a **dashboard-first MVP** for daily Canada-wide fire-weather situational awareness.
+A lightweight situational awareness dashboard that with access to public data sources in a single dashboard.
+
+This dashboard is intended to run on Windows with minimal permissions or installs required.
+
+## Requirements
+
+1. Windows Powershell with the ability to bypass the execution policy
+2. Python 3.xx
+3. A browser with ability to enable pop-ups. This is due to the javascript methods used to open new tabs being caught by some pop-up blocking.
 
 ## What it does
 
-The dashboard is designed to answer three questions quickly each morning:
+The dashboard gives one-click access to public data resources regarding current national weather/watches/warnings as well as pertinent news stories regarding fire or smoke. What it does versus a collection of bookmarks
 
-1. What is the broad weather pattern across Canada?
-2. What watches, warnings, or special weather statements are active?
-3. What wildfire developments or major news items are notable right now?
+1. Single dashboard view of national and regional weather forecast and agency fire weather pages
+2. RSS feed of recent and pertinent news articles regarding fire or smoke, for situational awarness
+3. Tweaked GOES IR composite with presets for longer loops and faster animation than the defaults on ECCC
 
 ## How to use
 
@@ -68,12 +76,7 @@ To change sources, edit `config/sources.json`.
 
 When launched through `start_briefing.bat` or `start_briefing.sh`, the dashboard first refreshes recent wildfire-related headlines and regenerates the configured GOES page, then starts a lightweight background refresher that updates `data/news.json` every 30 minutes. The open dashboard polls that file on the same cadence.
 
-The page also contains a built-in fallback source list so it still works when launched directly as a local file with no web server.
+The page also contains a built-in fallback source list so it still works when launched directly as a local file with no web server. In this case only static links will work, and the RSS feed will not load or update.
 
 For security reasons, the dashboard page itself does not directly start or stop local scripts from within the browser. The external `start_briefing.*` and `stop_briefing.*` launchers are the simpler and more reliable approach.
 
-## Suggested next steps
-
-- Fine-tune the keyword list or add seasonal terms
-- Add province/territory prioritization based on current activity
-- Optionally upgrade to a lightweight `Streamlit` interface later
