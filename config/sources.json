@@ -48,14 +48,14 @@
       "why": "Adds a fast smoke-transport perspective to the national morning briefing."
     },
     {
-      "id": "ec-alerts",
+      "id": "cwfis-home",
       "category": "alerts",
       "group": "core",
       "region": "Canada",
-      "label": "Environment Canada — weather homepage",
-      "url": "https://weather.gc.ca/index_e.html",
-      "description": "Environment Canada weather homepage with alerts, forecasts, and national access points.",
-      "why": "Reliable national entry point for hazard checks and follow-up navigation."
+      "label": "CWFIS Interactive Map — active fires, hotspots, FWI",
+      "url": "https://cwfis.cfs.nrcan.gc.ca/en/interactive-map?layerIds=public%3Acwfif_national_activefires%2Cpublic%3Ahotspots_24h%2Cpublic%3Am3polygons%2Cpublic%3Afwi",
+      "description": "Current FWI, active fires, M3 hotspots",
+      "why": ""
     },
     {
       "id": "ciffc-map",
