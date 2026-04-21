@@ -48,14 +48,14 @@
       "why": "Adds a fast smoke-transport perspective to the national morning briefing."
     },
     {
-      "id": "cwfis-home",
-      "category": "alerts",
+      "id": "cwfis-interactive-map",
+      "category": "weather",
       "group": "core",
       "region": "Canada",
       "label": "CWFIS Interactive Map — active fires, hotspots, FWI",
       "url": "https://cwfis.cfs.nrcan.gc.ca/en/interactive-map?layerIds=public%3Acwfif_national_activefires%2Cpublic%3Ahotspots_24h%2Cpublic%3Am3polygons%2Cpublic%3Afwi",
-      "description": "Current FWI, active fires, M3 hotspots",
-      "why": ""
+      "description": "Current FWI, active fires, M3 hotspots across Canada.",
+      "why": "Interactive view of national fire conditions complementing satellite and precipitation data."
     },
     {
       "id": "ciffc-map",
@@ -88,7 +88,7 @@
       "why": "Adds concise written context to the national numbers."
     },
     {
-      "id": "cwfis-home",
+      "id": "cwfis-main",
       "category": "wildfire",
       "group": "core",
       "region": "Canada",
@@ -96,28 +96,6 @@
       "url": "https://cwfis.cfs.nrcan.gc.ca/en",
       "description": "Federal wildfire information hub and related map products.",
       "why": "Complements CIFFC with federal wildfire products."
-    },
-    {
-      "id": "cbc-canada",
-      "category": "news",
-      "group": "core",
-      "region": "Canada",
-      "label": "CBC News — Canada",
-      "url": "https://www.cbc.ca/news/canada",
-      "feedUrl": "https://www.cbc.ca/webfeed/rss/rss-canada",
-      "description": "National reporting that often captures major wildfire impacts and evacuations.",
-      "why": "Good first news skim for notable developments in the last 24 hours."
-    },
-    {
-      "id": "cbc-north",
-      "category": "news",
-      "group": "core",
-      "region": "North",
-      "label": "CBC News — North",
-      "url": "https://www.cbc.ca/news/canada/north",
-      "feedUrl": "https://www.cbc.ca/webfeed/rss/rss-canada-north",
-      "description": "Regional northern reporting where wildfire impacts can be significant.",
-      "why": "Helps surface stories that may be underrepresented in national feeds."
     },
     {
       "id": "ctv-canada",

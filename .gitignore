@@ -1,2 +1,3 @@
 data/news.json
+data/news_refresh.lock
 scripts/__pycache__/

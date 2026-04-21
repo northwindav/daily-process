@@ -1,10 +1,4 @@
 const FALLBACK_DATA = {
-  morningChecklist: [
-    "Scan the national weather overview first to orient to the broad synoptic and fire-weather pattern.",
-    "Check official Environment Canada warnings and statements for any active hazard signals.",
-    "Review CIFFC and CWFIS for the national wildfire picture before drilling into any province or territory.",
-    "Skim recent news for evacuations, smoke impacts, notable new fires, and major public messaging changes."
-  ],
   sources: [
     {
       id: "goes-ir-composite",
@@ -47,16 +41,6 @@ const FALLBACK_DATA = {
       why: "Adds a fast smoke-transport perspective to the national morning briefing."
     },
     {
-      id: "ec-alerts",
-      category: "alerts",
-      group: "core",
-      region: "Canada",
-      label: "Environment Canada — weather homepage",
-      url: "https://weather.gc.ca/index_e.html",
-      description: "Environment Canada weather homepage with alerts, forecasts, and national access points.",
-      why: "Reliable national entry point for hazard checks and follow-up navigation."
-    },
-    {
       id: "ciffc-map",
       category: "wildfire",
       group: "core",
@@ -87,7 +71,7 @@ const FALLBACK_DATA = {
       why: "Adds concise written context to the national numbers."
     },
     {
-      id: "cwfis-home",
+      id: "cwfis-main",
       category: "wildfire",
       group: "core",
       region: "Canada",
@@ -95,28 +79,6 @@ const FALLBACK_DATA = {
       url: "https://cwfis.cfs.nrcan.gc.ca/en",
       description: "Federal wildfire information hub and related map products.",
       why: "Complements CIFFC with federal wildfire products."
-    },
-    {
-      id: "cbc-canada",
-      category: "news",
-      group: "core",
-      region: "Canada",
-      label: "CBC News — Canada",
-      url: "https://www.cbc.ca/news/canada",
-      feedUrl: "https://www.cbc.ca/webfeed/rss/rss-canada",
-      description: "National reporting that often captures major wildfire impacts and evacuations.",
-      why: "Good first news skim for notable developments in the last 24 hours."
-    },
-    {
-      id: "cbc-north",
-      category: "news",
-      group: "core",
-      region: "North",
-      label: "CBC News — North",
-      url: "https://www.cbc.ca/news/canada/north",
-      feedUrl: "https://www.cbc.ca/webfeed/rss/rss-canada-north",
-      description: "Regional northern reporting where wildfire impacts can be significant.",
-      why: "Helps surface stories that may be underrepresented in national feeds."
     },
     {
       id: "ctv-canada",
@@ -290,17 +252,6 @@ async function loadHeadlines() {
   }
 }
 
-function renderChecklist(items) {
-  const list = document.getElementById("checklist");
-  list.innerHTML = "";
-
-  items.forEach((item) => {
-    const li = document.createElement("li");
-    li.textContent = item;
-    list.appendChild(li);
-  });
-}
-
 function renderCategory(sources, category, containerId) {
   const container = document.getElementById(containerId);
   container.innerHTML = "";
@@ -317,7 +268,6 @@ function renderCategory(sources, category, containerId) {
       </div>
       <h3>${source.label}</h3>
       <p>${source.description}</p>
-      <p class="why"><strong>Why this matters:</strong> ${source.why}</p>
       <div class="card-actions">
         <a class="btn-link" href="${source.url}" target="_blank" rel="noreferrer">Open source</a>
       </div>
@@ -334,20 +284,6 @@ function labelForCategory(category) {
     news: "News",
     regional: "Regional"
   }[category] || "Source";
-}
-
-function updateCounts(sources) {
-  const counts = {
-    weather: sources.filter((item) => item.category === "weather").length,
-    alerts: sources.filter((item) => item.category === "alerts").length,
-    wildfire: sources.filter((item) => item.category === "wildfire").length,
-    news: sources.filter((item) => item.category === "news").length
-  };
-
-  document.getElementById("weather-count").textContent = counts.weather;
-  document.getElementById("alerts-count").textContent = counts.alerts;
-  document.getElementById("wildfire-count").textContent = counts.wildfire;
-  document.getElementById("news-count").textContent = counts.news;
 }
 
 function updateOpenedStatus(label, openedCount, requestedCount) {
@@ -510,7 +446,7 @@ function renderHeadlines(newsData) {
 
   if (newsData.loadedFrom === "json" && newsData.generatedAt) {
     meta.textContent = `Last RSS refresh: ${new Date(newsData.generatedAt).toLocaleString()} · auto-refresh every 30 min while open`;
-  } else if (newsData.loadedFrom === "file") {
+  } else if (newsData.loadedFrom === "file" || newsData.loadedFrom === "fallback") {
     meta.textContent = "Live headlines appear when you launch the dashboard through the one-click script.";
   } else {
     meta.textContent = "No cached headline file yet. Launch the dashboard again to refresh RSS headlines.";
@@ -571,14 +507,11 @@ window.addEventListener("DOMContentLoaded", async () => {
   const data = await loadData();
   const headlines = await loadHeadlines();
 
-  renderChecklist(data.morningChecklist || FALLBACK_DATA.morningChecklist);
   renderCategory(data.sources, "weather", "weather-sources");
-  renderCategory(data.sources, "alerts", "alerts-sources");
   renderCategory(data.sources, "wildfire", "wildfire-sources");
   renderCategory(data.sources, "news", "news-sources");
   renderCategory(data.sources, "regional", "regional-sources");
   renderHeadlines(headlines);
-  updateCounts(data.sources);
   setupButtons(data.sources);
   updateStatus(data);
 

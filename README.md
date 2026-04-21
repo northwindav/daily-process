@@ -12,11 +12,12 @@ This dashboard is intended to run on Windows with minimal permissions or install
 
 ## What it does
 
-The dashboard gives one-click access to public data resources regarding current national weather/watches/warnings as well as pertinent news stories regarding fire or smoke. What it does versus a collection of bookmarks
+The dashboard gives one-click access to public data resources regarding current national weather, fire conditions, wildfire status, and pertinent news stories. Compared to a collection of bookmarks:
 
-1. Single dashboard view of national and regional weather forecast and agency fire weather pages
-2. RSS feed of recent and pertinent news articles regarding fire or smoke, for situational awarness
-3. Tweaked GOES IR composite with presets for longer loops and faster animation than the defaults on ECCC
+1. **Consolidated dashboard view** organized into five sections: National Overview (weather + CWFIS fire conditions), Wildfire status, News (with filtered RSS headlines from last 24 hours), and Regional follow-up
+2. **Live RSS headline feed** displaying recent and pertinent wildfire-related news articles from multiple outlets (auto-refreshes every 30 minutes)
+3. **Pre-configured GOES IR page** tuned for the morning scan with longer animation loops and faster playback than ECCC defaults
+4. **Multi-tab button workflows** to quickly open all core sources or regional follow-up sources at once
 
 ## How to use
 
@@ -70,13 +71,41 @@ Run:
 - `stop_briefing.ps1` / `stop_briefing.bat` — Windows cleanup scripts to stop the background processes
 - `data/news.json` — cached headline results used by the dashboard
 
+## Dashboard structure
+
+The dashboard is organized into five main sections, each rendered from the `sources` array in `config/sources.json`:
+
+- **National Overview** — Weather patterns and fire conditions (GOES IR, AniMet weather analysis, CWFIS interactive map with FWI and active fires)
+- **Wildfire status** — National fire activity (CIFFC maps and summaries, CWFIS federal products)
+- **News in the last 24 hours** — Filtered RSS headlines followed by news source links (CBC, CTV, Global, The Weather Network, and wildfire-specific searches)
+- **Regional follow-up** — Provincial and territorial wildfire and emergency resources (opened via the "Open regional follow-up" button)
+
+Two quick-access buttons at the top:
+- **Open core sources** — Opens all National Overview and Wildfire status sources in separate tabs
+- **Open regional follow-up** — Opens all Regional resources in separate tabs
+
 ## Maintenance
 
-To change sources, edit `config/sources.json`.
+To change sources or add/remove sections, edit `config/sources.json`. The dashboard reads and renders all sources dynamically based on their `category` field (weather, wildfire, news, regional).
 
-When launched through `start_briefing.bat` or `start_briefing.sh`, the dashboard first refreshes recent wildfire-related headlines and regenerates the configured GOES page, then starts a lightweight background refresher that updates `data/news.json` every 30 minutes. The open dashboard polls that file on the same cadence.
+To modify the dashboard structure itself, edit `dashboard/index.html` for layout and `dashboard/app.js` for rendering logic.
 
-The page also contains a built-in fallback source list so it still works when launched directly as a local file with no web server. In this case only static links will work, and the RSS feed will not load or update.
+When launched through `start_briefing.bat` or `start_briefing.sh`:
+1. The dashboard first refreshes recent wildfire-related headlines from configured RSS feeds
+2. It regenerates the pre-configured GOES IR page
+3. A lightweight 30-minute background refresher keeps `data/news.json` up-to-date
+4. The open dashboard polls the news feed on the same 30-minute cadence
 
-For security reasons, the dashboard page itself does not directly start or stop local scripts from within the browser. The external `start_briefing.*` and `stop_briefing.*` launchers are the simpler and more reliable approach.
+The dashboard also contains a built-in fallback source list so it still works when launched as a local file with no web server. In this case, only static links work and the live RSS feed will not load or update.
+
+For security reasons, the dashboard page itself does not start or stop local background processes. The external `start_briefing.*` and `stop_briefing.*` launchers manage the Python server and news refresh loop.
+
+## Current news sources
+
+The dashboard automatically refreshes headlines from these outlets (via Google News RSS search):
+- CBC News — National and specific wildfire searches
+- CTV News — Global news feed
+- Global News — National and specific wildfire searches  
+- The Weather Network — Weather-focused news
+- Google News — Wildfire-specific search across all outlets
 
