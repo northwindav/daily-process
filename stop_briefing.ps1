@@ -13,6 +13,7 @@ $targets = Get-CimInstance Win32_Process | Where-Object {
     $_.Name -match '^python(?:w)?\.exe$' -and
     (
         $_.CommandLine -match [regex]::Escape("http.server $Port") -or
+        $_.CommandLine -match 'server\.py' -or
         $_.CommandLine -match 'refresh_news_loop\.py'
     )
 }

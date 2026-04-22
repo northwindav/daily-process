@@ -17,7 +17,8 @@ The dashboard gives one-click access to public data resources regarding current 
 1. **Consolidated dashboard view** organized into five sections: National Overview (weather + CWFIS fire conditions), Wildfire status, News (with filtered RSS headlines from last 24 hours), and Regional follow-up
 2. **Live RSS headline feed** displaying recent and pertinent wildfire-related news articles from multiple outlets (auto-refreshes every 30 minutes)
 3. **Pre-configured GOES IR page** tuned for the morning scan with longer animation loops and faster playback than ECCC defaults
-4. **Multi-tab button workflows** to quickly open all core sources or regional follow-up sources at once
+4. **METAR Observation Viewer** for quick access to current station observations across Canada and northern USA (1–48 hour history with timezone support)
+5. **Multi-tab button workflows** to quickly open all core sources or regional follow-up sources at once
 
 ## How to use
 
@@ -63,10 +64,16 @@ Run:
 - `dashboard/app.js` — renders source cards, buttons, and recent headlines
 - `dashboard/styles.css` — dashboard styling
 - `dashboard/goes_ir_configured.html` — generated GOES IR page tuned for the morning scan
+- `dashboard/metar.html` — METAR observation viewer page
+- `dashboard/metar.js` — METAR form handler and results display
 - `config/sources.json` — curated list of source links and notes
+- `config/metar_stations.json` — reference list of METAR stations (74 total: 49 Canadian, 25 US north of 40°N)
 - `scripts/fetch_rss.py` — refreshes wildfire-related headlines from the last 24 hours
 - `scripts/fetch_goes_page.py` — regenerates the configured GOES IR page
 - `scripts/refresh_news_loop.py` — lightweight 30-minute background news refresher
+- `scripts/metar_handler.py` — METAR API handler for querying aviationweather.gov observations
+- `scripts/server.py` — custom HTTP server with API routing for METAR endpoint
+- `scripts/update_stations.py` — utility to refresh station list from aviationweather.gov (run 2-3x per year)
 - `start_briefing.ps1` / `start_briefing.bat` — Windows launchers for the live local dashboard
 - `stop_briefing.ps1` / `stop_briefing.bat` — Windows cleanup scripts to stop the background processes
 - `data/news.json` — cached headline results used by the dashboard
@@ -83,6 +90,32 @@ The dashboard is organized into five main sections, each rendered from the `sour
 Two quick-access buttons at the top:
 - **Open core sources** — Opens all National Overview and Wildfire status sources in separate tabs
 - **Open regional follow-up** — Opens all Regional resources in separate tabs
+
+### METAR Observation Viewer
+
+Accessible from the dashboard as a separate tab, the METAR viewer provides quick access to recent station observations:
+
+- **Station search**: Enter a 4-character IATA or ICAO code (e.g., YYZ for Toronto, JFK for New York)
+- **Time range**: Select 1, 6, 12, 24, or 48 hours back (default: 12 hours)
+### METAR Observation Viewer
+
+Accessible from the dashboard as a separate tab, the METAR viewer provides quick access to recent station observations:
+
+- **Station search**: Enter a 4-character IATA or ICAO code (e.g., YYZ for Toronto, JFK for New York)
+- **Time range**: Select 1, 6, 12, 24, or 48 hours back (default: 12 hours)
+- **Timezone**: Choose UTC or 6 North American abbreviations (PDT, MDT, CDT, EDT, NDT) for time display
+- **Results**: Displays observations in a table with:
+  - Time, temperature, dew point, relative humidity (RH), wind, visibility, pressure, weather, cloud layers, and remarks
+  - **Conditional highlighting**: Temperature and RH values display in bold red when RH ≤ T (useful for fire weather monitoring)
+  - **Newest-first sort**: Most recent observations appear first for quick scanning
+- **Station reference**: Searchable list of 74 weather stations (49 Canadian, 25 US north of 40°N) for quick lookups
+- **Interactive map**: Zoomable OpenStreetMap display showing all available station locations with markers (click any marker to auto-populate the search box)
+
+Data is queried on-demand from aviationweather.gov; no caching or history is retained. Station list updates 2-3 times per year via `scripts/update_stations.py`.
+
+## Future enhancements
+
+**Phase 2 (Planned)**: Expand METAR data to include partner stations from dd.weather.gc.ca, enabling access to additional Canadian surface observation networks (roadside stations, forestry sites, etc.) for more granular regional fire weather monitoring.
 
 ## Maintenance
 

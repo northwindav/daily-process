@@ -1,0 +1,742 @@
+[
+  {
+    "icao": "CYAT",
+    "iata": "",
+    "name": "Attawapisket Arpt, ON, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 52.927,
+    "lon": -82.432,
+    "elevation_m": 4
+  },
+  {
+    "icao": "CYBK",
+    "iata": "",
+    "name": "Baker Lake Arpt, NU, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 64.306,
+    "lon": -96.078,
+    "elevation_m": 14
+  },
+  {
+    "icao": "CYCA",
+    "iata": "",
+    "name": "Cartwright Arpt, NL, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 53.683,
+    "lon": -57.042,
+    "elevation_m": 12
+  },
+  {
+    "icao": "CYCD",
+    "iata": "",
+    "name": "Nanaimo Arpt, BC, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 49.052,
+    "lon": -123.874,
+    "elevation_m": 30
+  },
+  {
+    "icao": "CYCK",
+    "iata": "",
+    "name": "Chatham/Kent Arpt, ON, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 42.307,
+    "lon": -82.085,
+    "elevation_m": 196
+  },
+  {
+    "icao": "CYEG",
+    "iata": "",
+    "name": "Edmonton Intl Arpt, AB, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 53.308,
+    "lon": -113.592,
+    "elevation_m": 710
+  },
+  {
+    "icao": "CYFB",
+    "iata": "",
+    "name": "Iqaluit Arpt, NU, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 63.75,
+    "lon": -68.544,
+    "elevation_m": 23
+  },
+  {
+    "icao": "CYFS",
+    "iata": "",
+    "name": "Fort Simpson Arpt, NT, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 61.76,
+    "lon": -121.23,
+    "elevation_m": 174
+  },
+  {
+    "icao": "CYGK",
+    "iata": "",
+    "name": "Kingston Arpt, ON, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 44.223,
+    "lon": -76.599,
+    "elevation_m": 91
+  },
+  {
+    "icao": "CYHZ",
+    "iata": "",
+    "name": "Halifax/Stanfield Intl, NS, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 44.8781,
+    "lon": -63.5136,
+    "elevation_m": 136
+  },
+  {
+    "icao": "CYMM",
+    "iata": "",
+    "name": "Fort McMurray Arpt, AB, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 56.65,
+    "lon": -111.221,
+    "elevation_m": 371
+  },
+  {
+    "icao": "CYOJ",
+    "iata": "",
+    "name": "High Level Arpt, AB, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 58.628,
+    "lon": -117.174,
+    "elevation_m": 339
+  },
+  {
+    "icao": "CYOW",
+    "iata": "",
+    "name": "Ottawa/Cartier Intl, ON, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 45.307,
+    "lon": -75.66,
+    "elevation_m": 111
+  },
+  {
+    "icao": "CYPA",
+    "iata": "",
+    "name": "Prince Albert Arpt, SK, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 53.217,
+    "lon": -105.679,
+    "elevation_m": 428
+  },
+  {
+    "icao": "CYPH",
+    "iata": "",
+    "name": "Inukjuak Arpt, QC, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 58.47,
+    "lon": -78.08,
+    "elevation_m": 24
+  },
+  {
+    "icao": "CYPO",
+    "iata": "",
+    "name": "Peawanuck Arpt, ON, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 54.988,
+    "lon": -85.439,
+    "elevation_m": 49
+  },
+  {
+    "icao": "CYPR",
+    "iata": "",
+    "name": "Prince Rupert Arpt, BC, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 54.291,
+    "lon": -130.451,
+    "elevation_m": 30
+  },
+  {
+    "icao": "CYQB",
+    "iata": "",
+    "name": "Quebec/Lesage Intl, QC, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 46.791,
+    "lon": -71.396,
+    "elevation_m": 73
+  },
+  {
+    "icao": "CYQU",
+    "iata": "",
+    "name": "Grande Prairie Arpt, AB, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 55.182,
+    "lon": -118.882,
+    "elevation_m": 668
+  },
+  {
+    "icao": "CYQX",
+    "iata": "",
+    "name": "Gander Intl Arpt, NL, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 48.946,
+    "lon": -54.576,
+    "elevation_m": 144
+  },
+  {
+    "icao": "CYRJ",
+    "iata": "",
+    "name": "Roberval Arpt, QC, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 48.523,
+    "lon": -72.266,
+    "elevation_m": 173
+  },
+  {
+    "icao": "CYSB",
+    "iata": "",
+    "name": "Sudbury Arpt, ON, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 46.622,
+    "lon": -80.799,
+    "elevation_m": 349
+  },
+  {
+    "icao": "CYTH",
+    "iata": "",
+    "name": "Thompson Arpt, MB, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 55.803,
+    "lon": -97.846,
+    "elevation_m": 212
+  },
+  {
+    "icao": "CYTL",
+    "iata": "",
+    "name": "Big Trout Lake Arpt, ON, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 53.816,
+    "lon": -89.892,
+    "elevation_m": 218
+  },
+  {
+    "icao": "CYUL",
+    "iata": "",
+    "name": "Montreal/Trudeau Intl, QC, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 45.468,
+    "lon": -73.742,
+    "elevation_m": 31
+  },
+  {
+    "icao": "CYUX",
+    "iata": "",
+    "name": "Hall Beach Arpt, NU, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 68.772,
+    "lon": -81.233,
+    "elevation_m": 8
+  },
+  {
+    "icao": "CYVL",
+    "iata": "",
+    "name": "Colville Lake, NT, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 67.021,
+    "lon": -126.129,
+    "elevation_m": 261
+  },
+  {
+    "icao": "CYVR",
+    "iata": "",
+    "name": "Vancouver Intl, BC, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 49.183,
+    "lon": -123.168,
+    "elevation_m": 2
+  },
+  {
+    "icao": "CYWA",
+    "iata": "",
+    "name": "Petawawa Arpt, ON, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 45.948,
+    "lon": -77.311,
+    "elevation_m": 121
+  },
+  {
+    "icao": "CYWG",
+    "iata": "",
+    "name": "Winnipeg Intl Arpt, MB, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 49.916,
+    "lon": -97.249,
+    "elevation_m": 238
+  },
+  {
+    "icao": "CYWH",
+    "iata": "",
+    "name": "Victoria Harbour Arpt, BC, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 48.423,
+    "lon": -123.387,
+    "elevation_m": 4
+  },
+  {
+    "icao": "CYWL",
+    "iata": "",
+    "name": "Williams Lake Rgnl, BC, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 52.186,
+    "lon": -122.066,
+    "elevation_m": 942
+  },
+  {
+    "icao": "CYXC",
+    "iata": "",
+    "name": "Cranbrook Intl, BC, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 49.614,
+    "lon": -115.784,
+    "elevation_m": 928
+  },
+  {
+    "icao": "CYXE",
+    "iata": "",
+    "name": "Saskatoon/Diefenbaker Intl, SK, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 52.172,
+    "lon": -106.695,
+    "elevation_m": 504
+  },
+  {
+    "icao": "CYXH",
+    "iata": "",
+    "name": "Medicine Hat Arpt, AB, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 50.018,
+    "lon": -110.717,
+    "elevation_m": 717
+  },
+  {
+    "icao": "CYXJ",
+    "iata": "",
+    "name": "Fort St John/N Peace Rgnl, BC, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 56.247,
+    "lon": -120.737,
+    "elevation_m": 700
+  },
+  {
+    "icao": "CYXL",
+    "iata": "",
+    "name": "Sioux Lookout Arpt, ON, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 50.114,
+    "lon": -91.905,
+    "elevation_m": 381
+  },
+  {
+    "icao": "CYXR",
+    "iata": "",
+    "name": "Earlton Arpt, ON, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 47.698,
+    "lon": -79.852,
+    "elevation_m": 244
+  },
+  {
+    "icao": "CYXS",
+    "iata": "",
+    "name": "Prince George Arpt, BC, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 53.884,
+    "lon": -122.677,
+    "elevation_m": 685
+  },
+  {
+    "icao": "CYXT",
+    "iata": "",
+    "name": "Terrace Arpt, BC, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 54.471,
+    "lon": -128.577,
+    "elevation_m": 213
+  },
+  {
+    "icao": "CYXU",
+    "iata": "",
+    "name": "London Intl, ON, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 43.039,
+    "lon": -81.162,
+    "elevation_m": 278
+  },
+  {
+    "icao": "CYXX",
+    "iata": "",
+    "name": "Abbotsford Intl, BC, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 49.027,
+    "lon": -122.377,
+    "elevation_m": 54
+  },
+  {
+    "icao": "CYXY",
+    "iata": "",
+    "name": "Whitehorse Arpt, YT, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 60.71,
+    "lon": -135.059,
+    "elevation_m": 677
+  },
+  {
+    "icao": "CYYC",
+    "iata": "",
+    "name": "Calgary Intl, AB, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 51.116,
+    "lon": -114.011,
+    "elevation_m": 1085
+  },
+  {
+    "icao": "CYYT",
+    "iata": "",
+    "name": "St Johns Intl, NL, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 47.627,
+    "lon": -52.748,
+    "elevation_m": 128
+  },
+  {
+    "icao": "CYYY",
+    "iata": "",
+    "name": "Mont Joli Arpt, QC, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 48.609,
+    "lon": -68.208,
+    "elevation_m": 43
+  },
+  {
+    "icao": "CYYZ",
+    "iata": "",
+    "name": "Toronto/Pearson Intl, ON, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 43.679,
+    "lon": -79.629,
+    "elevation_m": 171
+  },
+  {
+    "icao": "CYZF",
+    "iata": "",
+    "name": "Yellowknife Arpt, NT, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 62.475,
+    "lon": -114.448,
+    "elevation_m": 202
+  },
+  {
+    "icao": "CYZS",
+    "iata": "",
+    "name": "Coral Harbour Arpt, NU, CA",
+    "region": "",
+    "country": "Canada",
+    "lat": 64.188,
+    "lon": -83.351,
+    "elevation_m": 60
+  },
+  {
+    "icao": "KABQ",
+    "iata": "",
+    "name": "Albuquerque Intl, NM, US",
+    "region": "",
+    "country": "United States",
+    "lat": 35.0419,
+    "lon": -106.6154,
+    "elevation_m": 1620
+  },
+  {
+    "icao": "KATL",
+    "iata": "",
+    "name": "Atlanta/Hartsfield-Jackson Intl, GA, US",
+    "region": "",
+    "country": "United States",
+    "lat": 33.6297,
+    "lon": -84.4422,
+    "elevation_m": 309
+  },
+  {
+    "icao": "KBOI",
+    "iata": "",
+    "name": "Boise Arpt, ID, US",
+    "region": "",
+    "country": "United States",
+    "lat": 43.567,
+    "lon": -116.2406,
+    "elevation_m": 860
+  },
+  {
+    "icao": "KCLE",
+    "iata": "",
+    "name": "Cleveland/Hopkins Intl, OH, US",
+    "region": "",
+    "country": "United States",
+    "lat": 41.4057,
+    "lon": -81.8519,
+    "elevation_m": 237
+  },
+  {
+    "icao": "KDCA",
+    "iata": "",
+    "name": "Washington/Reagan-National Arpt, VA, US",
+    "region": "",
+    "country": "United States",
+    "lat": 38.8472,
+    "lon": -77.0345,
+    "elevation_m": 4
+  },
+  {
+    "icao": "KDEN",
+    "iata": "",
+    "name": "Denver Intl, CO, US",
+    "region": "",
+    "country": "United States",
+    "lat": 39.8466,
+    "lon": -104.6562,
+    "elevation_m": 1656
+  },
+  {
+    "icao": "KDFW",
+    "iata": "",
+    "name": "Dallas-Ft Worth Intl, TX, US",
+    "region": "",
+    "country": "United States",
+    "lat": 32.8974,
+    "lon": -97.022,
+    "elevation_m": 168
+  },
+  {
+    "icao": "KDTW",
+    "iata": "",
+    "name": "Detroit/Metro Wayne Cnty, MI, US",
+    "region": "",
+    "country": "United States",
+    "lat": 42.2311,
+    "lon": -83.3312,
+    "elevation_m": 192
+  },
+  {
+    "icao": "KFAR",
+    "iata": "",
+    "name": "Fargo/Hector Intl, ND, US",
+    "region": "",
+    "country": "United States",
+    "lat": 46.9242,
+    "lon": -96.8119,
+    "elevation_m": 276
+  },
+  {
+    "icao": "KIAD",
+    "iata": "",
+    "name": "Washington/Dulles Intl, VA, US",
+    "region": "",
+    "country": "United States",
+    "lat": 38.9348,
+    "lon": -77.4473,
+    "elevation_m": 90
+  },
+  {
+    "icao": "KIAH",
+    "iata": "",
+    "name": "Houston/Bush Intl, TX, US",
+    "region": "",
+    "country": "United States",
+    "lat": 29.9844,
+    "lon": -95.3607,
+    "elevation_m": 27
+  },
+  {
+    "icao": "KJFK",
+    "iata": "",
+    "name": "New York/JF Kennedy Intl, NY, US",
+    "region": "",
+    "country": "United States",
+    "lat": 40.6392,
+    "lon": -73.7639,
+    "elevation_m": 3
+  },
+  {
+    "icao": "KLAX",
+    "iata": "",
+    "name": "Los Angeles Intl, CA, US",
+    "region": "",
+    "country": "United States",
+    "lat": 33.9382,
+    "lon": -118.3866,
+    "elevation_m": 30
+  },
+  {
+    "icao": "KLGA",
+    "iata": "",
+    "name": "New York/La Guardia Arpt, NY, US",
+    "region": "",
+    "country": "United States",
+    "lat": 40.7794,
+    "lon": -73.8803,
+    "elevation_m": 9
+  },
+  {
+    "icao": "KMCI",
+    "iata": "",
+    "name": "Kansas City Intl, MO, US",
+    "region": "",
+    "country": "United States",
+    "lat": 39.2975,
+    "lon": -94.7309,
+    "elevation_m": 308
+  },
+  {
+    "icao": "KMCO",
+    "iata": "",
+    "name": "Orlando Intl, FL, US",
+    "region": "",
+    "country": "United States",
+    "lat": 28.4182,
+    "lon": -81.3241,
+    "elevation_m": 27
+  },
+  {
+    "icao": "KMSO",
+    "iata": "",
+    "name": "Missoula Intl, MT, US",
+    "region": "",
+    "country": "United States",
+    "lat": 46.9208,
+    "lon": -114.0938,
+    "elevation_m": 974
+  },
+  {
+    "icao": "KMSP",
+    "iata": "",
+    "name": "Minneapolis-St Paul Intl, MN, US",
+    "region": "",
+    "country": "United States",
+    "lat": 44.8852,
+    "lon": -93.2313,
+    "elevation_m": 255
+  },
+  {
+    "icao": "KORD",
+    "iata": "",
+    "name": "Chicago/O'Hare Intl, IL, US",
+    "region": "",
+    "country": "United States",
+    "lat": 41.9602,
+    "lon": -87.9316,
+    "elevation_m": 202
+  },
+  {
+    "icao": "KPDX",
+    "iata": "",
+    "name": "Portland Intl, OR, US",
+    "region": "",
+    "country": "United States",
+    "lat": 45.5958,
+    "lon": -122.6092,
+    "elevation_m": 7
+  },
+  {
+    "icao": "KRDU",
+    "iata": "",
+    "name": "Raleigh-Durham Intl, NC, US",
+    "region": "",
+    "country": "United States",
+    "lat": 35.8923,
+    "lon": -78.782,
+    "elevation_m": 121
+  },
+  {
+    "icao": "KRSN",
+    "iata": "",
+    "name": "Ruston Rgnl, LA, US",
+    "region": "",
+    "country": "United States",
+    "lat": 32.5159,
+    "lon": -92.5899,
+    "elevation_m": 86
+  },
+  {
+    "icao": "KSEA",
+    "iata": "",
+    "name": "Seattle-Tacoma Intl, WA, US",
+    "region": "",
+    "country": "United States",
+    "lat": 47.4447,
+    "lon": -122.3144,
+    "elevation_m": 115
+  },
+  {
+    "icao": "KSPK",
+    "iata": "",
+    "name": "Spanish Fork Muni, UT, US",
+    "region": "",
+    "country": "United States",
+    "lat": 40.1497,
+    "lon": -111.677,
+    "elevation_m": 1381
+  },
+  {
+    "icao": "KSTL",
+    "iata": "",
+    "name": "St Louis/Lambert Intl, MO, US",
+    "region": "",
+    "country": "United States",
+    "lat": 38.7525,
+    "lon": -90.3734,
+    "elevation_m": 163
+  }
+]

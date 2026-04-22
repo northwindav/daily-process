@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>METAR Observation Viewer</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Leaflet CSS for map -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+  <style>
+    .metar-container {
+      max-width: 100%;
+      padding: 1rem;
+    }
+
+    .metar-form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      background: #fbfdff;
+      padding: 1rem;
+      border-radius: 14px;
+      border: 1px solid #e0e6f2;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--primary-dark, #003366);
+    }
+
+    .form-group input,
+    .form-group select {
+      padding: 0.65rem 0.8rem;
+      border-radius: 8px;
+      border: 1px solid #cfe1f7;
+      font-size: 0.95rem;
+      background: white;
+      color: #333;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #0066cc;
+      box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+    }
+
+    .metar-button {
+      padding: 0.65rem 1.2rem;
+      background: #003d99;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      align-self: flex-end;
+      transition: background 0.2s;
+    }
+
+    .metar-button:hover {
+      background: #00274d;
+    }
+
+    .metar-button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    .metar-status {
+      text-align: center;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+      color: #666;
+    }
+
+    .metar-status.error {
+      color: #d9534f;
+      background: #f2dede;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ebccd1;
+    }
+
+    .metar-status.loading {
+      color: #0066cc;
+    }
+
+    .metar-results {
+      margin-top: 1.5rem;
+    }
+
+    .metar-results table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border: 1px solid #e0e6f2;
+      border-radius: 8px;
+      overflow: hidden;
+      font-size: 0.9rem;
+    }
+
+    .metar-results thead {
+      background: #edf5ff;
+      border-bottom: 2px solid #cfe1f7;
+    }
+
+    .metar-results th {
+      padding: 0.75rem;
+      text-align: left;
+      font-weight: 700;
+      color: var(--primary-dark, #003366);
+      border-right: 1px solid #cfe1f7;
+    }
+
+    .metar-results th:last-child {
+      border-right: none;
+    }
+
+    .metar-results td {
+      padding: 0.75rem;
+      border-bottom: 1px solid #e0e6f2;
+      border-right: 1px solid #e0e6f2;
+    }
+
+    .metar-results td:last-child {
+      border-right: none;
+    }
+
+    .metar-results tbody tr:hover {
+      background: #f8fbff;
+    }
+
+    .metar-results tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .station-header {
+      background: #003d99;
+      color: white;
+      padding: 1rem;
+      border-radius: 8px 8px 0 0;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0;
+    }
+
+    .metar-section {
+      margin-bottom: 2rem;
+      background: white;
+      border-radius: 8px;
+      border: 1px solid #e0e6f2;
+      overflow: hidden;
+    }
+
+    .station-reference {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      background: #fbfdff;
+      border-radius: 14px;
+      border: 1px solid #e0e6f2;
+      padding: 1rem;
+    }
+
+    .station-reference-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .station-reference-map {
+      display: flex;
+      flex-direction: column;
+    }
+
+    #map {
+      flex: 1;
+      min-height: 500px;
+      border-radius: 8px;
+      border: 1px solid #e0e6f2;
+    }
+
+    .station-reference h3 {
+      margin: 0 0 1rem;
+      color: var(--primary-dark, #003366);
+      grid-column: 1 / -1;
+    }
+
+    .station-list {
+      max-height: 400px;
+      overflow-y: auto;
+      border: 1px solid #e0e6f2;
+      border-radius: 8px;
+      background: white;
+    }
+
+    .station-item {
+      padding: 0.75rem;
+      border-bottom: 1px solid #f0f0f0;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.1s;
+    }
+
+    .station-item:hover {
+      background: #f8fbff;
+    }
+
+    .station-item strong {
+      color: var(--primary-dark, #003366);
+      font-weight: 700;
+    }
+
+    .station-item small {
+      color: #999;
+      margin-left: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .metar-form {
+        grid-template-columns: 1fr;
+      }
+
+      .metar-button {
+        align-self: stretch;
+      }
+
+      .metar-results table {
+        font-size: 0.8rem;
+      }
+
+      .metar-results th,
+      .metar-results td {
+        padding: 0.5rem;
+      }
+
+      .station-reference {
+        grid-template-columns: 1fr;
+      }
+
+      #map {
+        min-height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="metar-container">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Station observations</p>
+        <h1>METAR Observation Viewer</h1>
+        <p class="subtitle">
+          View recent observations from Canadian and US stations.
+          Select a station, choose the time range and timezone, and retrieve observations from the last 1–48 hours.
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <!-- Search and Filter Form -->
+      <div class="metar-form">
+        <div class="form-group">
+          <label for="station-code">Station Code (IATA/ICAO)</label>
+          <input type="text" id="station-code" placeholder="e.g., YYZ, YUL, JFK" maxlength="4" />
+        </div>
+
+        <div class="form-group">
+          <label for="hours-select">Hours Back</label>
+          <select id="hours-select">
+            <option value="1">1 hour</option>
+            <option value="6">6 hours</option>
+            <option value="12" selected>12 hours</option>
+            <option value="24">24 hours</option>
+            <option value="48">48 hours</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="timezone-select">Timezone</label>
+          <select id="timezone-select">
+            <option value="UTC">UTC</option>
+            <option value="pdt">PDT (UTC-7)</option>
+            <option value="mdt">MDT (UTC-6)</option>
+            <option value="cdt">CDT (UTC-5)</option>
+            <option value="edt">EDT (UTC-4)</option>
+            <option value="ndt">NDT (UTC-3.5)</option>
+          </select>
+        </div>
+
+        <button class="metar-button" id="fetch-button">Fetch Observations</button>
+        <button class="metar-button" id="clear-button" style="background: #666;">Clear</button>
+      </div>
+
+      <!-- Status Display -->
+      <div id="status-message" class="metar-status" style="display: none;"></div>
+
+      <!-- Results Section -->
+      <div id="results-container"></div>
+
+      <!-- Station Reference -->
+      <div class="station-reference">
+        <h3>Station Reference & Map</h3>
+        
+        <div class="station-reference-list">
+          <p>
+            <input
+              type="text"
+              id="station-search"
+              placeholder="Search by city, region, or code..."
+              style="width: 100%; padding: 0.65rem 0.8rem; border-radius: 8px; border: 1px solid #cfe1f7; margin-bottom: 1rem;"
+            />
+          </p>
+          <div class="station-list" id="station-list"></div>
+        </div>
+
+        <div class="station-reference-map">
+          <div id="map"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Leaflet JS for map -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="metar.js"></script>
+</body>
+</html>

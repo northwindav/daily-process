@@ -58,6 +58,16 @@
       "why": "Interactive view of national fire conditions complementing satellite and precipitation data."
     },
     {
+      "id": "metar-viewer",
+      "category": "weather",
+      "group": "core",
+      "region": "Canada/North America",
+      "label": "METAR Observation Viewer",
+      "url": "metar.html",
+      "description": "Recent observations from Canadian and US stations (1–48 hours, user-selectable timezone).",
+      "why": "Quick reference for station conditions across Canada and northern USA."
+    },
+    {
       "id": "ciffc-map",
       "category": "wildfire",
       "group": "core",

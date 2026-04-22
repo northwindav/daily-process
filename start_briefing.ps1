@@ -121,7 +121,7 @@ catch {
 
 if (-not (Test-ServerReady -Url $DashboardUrl)) {
     try {
-        Start-Process -FilePath $pythonExe -ArgumentList '-m', 'http.server', $Port -WorkingDirectory $BaseDir -WindowStyle Minimized -RedirectStandardOutput $serverOutLog -RedirectStandardError $serverErrLog | Out-Null
+        Start-Process -FilePath $pythonExe -ArgumentList 'scripts\server.py', $Port -WorkingDirectory $BaseDir -WindowStyle Minimized -RedirectStandardOutput $serverOutLog -RedirectStandardError $serverErrLog | Out-Null
     }
     catch {
         $_ | Out-File -FilePath $serverErrLog -Encoding utf8 -Append
