@@ -105,6 +105,44 @@ def configure_html(html: str) -> str:
     if "copilot-goes-config" not in html:
         html = html.replace("</body>", f"\n{inject_script}\n</body>", 1)
 
+    # Inject GIF download button and scripts
+    gif_download_button = """
+<div id=\"copilot-gif-download-row\" class=\"row wxo-nojs-hide hidden\" style=\"margin-top: 0.5rem;\">
+  <div class=\"col-lg-4 col-md-4 col-sm-6 col-xs-12 mrgn-bttm-md mrgn-lft-md\">
+    <button id=\"gif-download-btn\" class=\"btn btn-success btn-sm\" title=\"Download as animated GIF for PowerPoint\">
+      <span class=\"glyphicon glyphicon-download\"></span>
+      <span class=\"wb-inv\">Download as GIF</span>
+      <span>Download as GIF</span>
+    </button>
+    <span id=\"gif-download-status\" class=\"mrgn-lft-md\" style=\"font-size: 0.9em; display: inline-block;\"></span>
+  </div>
+</div>
+""".strip()
+
+    gif_scripts = """
+<!-- GIF Download Feature -->
+<script>
+  // Load gif.js from local server (avoids tracking prevention blocking CDN)
+  const gifScript = document.createElement('script');
+  gifScript.src = new URL('/lib/gif.js', window.location.href).href;
+  gifScript.onload = () => {
+    // gif.js loaded, now load gif-download.js from local server
+    const appScript = document.createElement('script');
+    appScript.src = new URL('/dashboard/gif-download.js', window.location.href).href;
+    document.head.appendChild(appScript);
+  };
+  document.head.appendChild(gifScript);
+</script>
+""".strip()
+
+    if "copilot-gif-download" not in html:
+        # Insert button after speed controls (look for Reset Speed button)
+        if "Reset Speed" in html and "wxo-anim-speed-reset" in html:
+            html = html.replace("Reset Speed</button>", f"Reset Speed</button>\n{gif_download_button}", 1)
+        
+        # Inject scripts before closing body tag
+        html = html.replace("</body>", f"\n{gif_scripts}\n</body>", 1)
+
     return html
 
 

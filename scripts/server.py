@@ -12,6 +12,8 @@ import http.server
 import json
 import sys
 import urllib.parse
+import urllib.request
+import ssl
 from pathlib import Path
 
 # Import the metar handler
@@ -35,6 +37,10 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
         # Route /api/metar requests to METAR handler
         if path == "/api/metar":
             return self._handle_metar_api(query_string)
+
+        # Route /api/proxy-image requests to image proxy handler
+        if path == "/api/proxy-image":
+            return self._handle_image_proxy(query_string)
 
         # All other requests: serve static files
         return super().do_GET()
@@ -72,6 +78,58 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.end_headers()
             error_response = {"success": False, "error": str(e)}
             self.wfile.write(json.dumps(error_response).encode("utf-8"))
+
+    def _handle_image_proxy(self, query_string):
+        """Proxy satellite images from weather.gc.ca to avoid CORS issues."""
+        try:
+            # Parse query parameters
+            params = urllib.parse.parse_qs(query_string)
+            url_path = params.get("url", [""])[0]
+
+            if not url_path:
+                self.send_response(400)
+                self.send_header("Content-Type", "application/json")
+                self.end_headers()
+                self.wfile.write(json.dumps({"error": "Missing 'url' parameter"}).encode("utf-8"))
+                return
+
+            # Construct full URL - relative paths get prefixed with weather.gc.ca
+            if url_path.startswith("/"):
+                full_url = f"https://weather.gc.ca{url_path}"
+            elif url_path.startswith("http"):
+                full_url = url_path
+            else:
+                full_url = f"https://weather.gc.ca/{url_path}"
+
+            # Fetch the image from weather.gc.ca
+            context = ssl.create_default_context()
+            request = urllib.request.Request(full_url, headers={"User-Agent": "Mozilla/5.0"})
+            
+            with urllib.request.urlopen(request, context=context, timeout=30) as response:
+                image_data = response.read()
+                content_type = response.headers.get("Content-Type", "image/jpeg")
+
+            # Send image response with CORS headers
+            self.send_response(200)
+            self.send_header("Content-Type", content_type)
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.send_header("Cache-Control", "public, max-age=3600")
+            self.end_headers()
+            self.wfile.write(image_data)
+
+        except urllib.error.HTTPError as e:
+            self.send_response(e.code)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"error": f"HTTP {e.code}: {e.reason}"}).encode("utf-8"))
+        except Exception as e:
+            import traceback
+            print(f"Image Proxy Error: {e}", file=sys.stderr)
+            print(traceback.format_exc(), file=sys.stderr)
+            self.send_response(500)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"error": str(e)}).encode("utf-8"))
 
     def log_message(self, format, *args):
         """Reduce logging verbosity."""

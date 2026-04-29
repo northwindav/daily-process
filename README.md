@@ -142,3 +142,13 @@ The dashboard automatically refreshes headlines from these outlets (via Google N
 - The Weather Network — Weather-focused news
 - Google News — Wildfire-specific search across all outlets
 
+## Third-party Libraries
+
+This project includes the following open-source library:
+
+- **gif.js** (MIT License) — Client-side JavaScript GIF encoder using Web Workers  
+  https://github.com/jnordberg/gif.js  
+  Copyright © 2013-2018 Johan Nordberg
+
+For full license text, see: https://github.com/jnordberg/gif.js/blob/master/LICENSE
+
