@@ -36,6 +36,40 @@ USER_AGENT = "fire-weather-briefing/1.0"
 # Collections to fetch
 SWOB_COLLECTIONS = ["swob-stations", "swob-partner-stations", "swob-marine-stations"]
 
+# Province and Territory name to abbreviation mapping
+PROVINCE_TERRITORY_MAP = {
+    "Alberta": "AB",
+    "British Columbia": "BC",
+    "Manitoba": "MB",
+    "New Brunswick": "NB",
+    "Newfoundland and Labrador": "NL",
+    "Northwest Territories": "NT",
+    "Nova Scotia": "NS",
+    "Nunavut": "NU",
+    "Ontario": "ON",
+    "Prince Edward Island": "PE",
+    "Quebec": "QC",
+    "Saskatchewan": "SK",
+    "Yukon": "YT",
+}
+
+
+def normalize_province_territory(name: str) -> str:
+    """Convert province/territory full name to 2-letter abbreviation."""
+    if not name:
+        return ""
+    
+    # If already 2 letters, return as-is
+    if len(name) == 2:
+        return name
+    
+    # Try direct lookup
+    if name in PROVINCE_TERRITORY_MAP:
+        return PROVINCE_TERRITORY_MAP[name]
+    
+    # Return original if not found
+    return name
+
 
 def fetch_json(url: str, timeout: int = API_TIMEOUT) -> dict | None:
     """Fetch and parse JSON from URL."""
@@ -125,7 +159,7 @@ def fetch_swob_stations() -> Dict[str, dict]:
                         "station_type": station_type,
                         "data_provider": props.get("data_provider", "MSC"),
                         "country": "Canada",  # Reasonable assumption for SWOB
-                        "province_territory": props.get("province_territory") or ""
+                        "province_territory": normalize_province_territory(props.get("province_territory") or "")
                     }
             
             print(f"  Processed {len(features)} features. Total stations: {len(stations)}", file=sys.stderr)
@@ -145,63 +179,64 @@ def fetch_aviationweather_stations() -> Dict[str, dict]:
     """Fetch stations from aviationweather.gov."""
     print("Fetching aviationweather.gov stations...", file=sys.stderr)
     
-    # Note: aviationweather.gov doesn't have a direct station list endpoint.
-    # For now, we'll use a static list of known US stations north of 40°N from existing config.
-    # In production, this would need a different approach.
+    # Hardcoded list of US stations north of 40°N from existing project config
+    US_STATIONS = [
+        {"code": "KABQ", "name": "Albuquerque Intl, NM, US", "lat": 35.0395, "lon": -106.6064, "elevation_m": 1616},
+        {"code": "KATL", "name": "Atlanta/Hartsfield-Jackson Intl, GA, US", "lat": 33.6407, "lon": -84.4277, "elevation_m": 313},
+        {"code": "KBOI", "name": "Boise Arpt, ID, US", "lat": 43.5647, "lon": -116.2228, "elevation_m": 874},
+        {"code": "KCLE", "name": "Cleveland/Hopkins Intl, OH, US", "lat": 41.4117, "lon": -81.8498, "elevation_m": 211},
+        {"code": "KDCA", "name": "Washington/Reagan-National Arpt, VA, US", "lat": 38.8521, "lon": -77.0377, "elevation_m": 5},
+        {"code": "KDEN", "name": "Denver Intl, CO, US", "lat": 39.8561, "lon": -104.6737, "elevation_m": 1609},
+        {"code": "KDFW", "name": "Dallas-Ft Worth Intl, TX, US", "lat": 32.8975, "lon": -97.038, "elevation_m": 190},
+        {"code": "KDTW", "name": "Detroit/Metro Wayne Cnty, MI, US", "lat": 42.2124, "lon": -83.3534, "elevation_m": 186},
+        {"code": "KFAR", "name": "Fargo/Hector Intl, ND, US", "lat": 46.9245, "lon": -96.8158, "elevation_m": 274},
+        {"code": "KIAD", "name": "Washington/Dulles Intl, VA, US", "lat": 38.8951, "lon": -77.4373, "elevation_m": 108},
+        {"code": "KIAH", "name": "Houston/Bush Intl, TX, US", "lat": 29.9844, "lon": -95.3368, "elevation_m": 31},
+        {"code": "KJFK", "name": "New York/JF Kennedy Intl, NY, US", "lat": 40.6413, "lon": -73.7781, "elevation_m": 4},
+        {"code": "KLAX", "name": "Los Angeles Intl, CA, US", "lat": 33.9425, "lon": -118.4081, "elevation_m": 125},
+        {"code": "KLGA", "name": "New York/La Guardia Arpt, NY, US", "lat": 40.7769, "lon": -73.8740, "elevation_m": 4},
+        {"code": "KMCI", "name": "Kansas City Intl, MO, US", "lat": 39.2976, "lon": -94.7139, "elevation_m": 312},
+        {"code": "KMCO", "name": "Orlando Intl, FL, US", "lat": 28.4294, "lon": -81.3089, "elevation_m": 10},
+        {"code": "KMSO", "name": "Missoula Intl, MT, US", "lat": 46.9164, "lon": -113.8899, "elevation_m": 975},
+        {"code": "KMSP", "name": "Minneapolis-St Paul Intl, MN, US", "lat": 44.8820, "lon": -93.2169, "elevation_m": 255},
+        {"code": "KORD", "name": "Chicago/O'Hare Intl, IL, US", "lat": 41.9742, "lon": -87.9073, "elevation_m": 205},
+        {"code": "KPDX", "name": "Portland Intl, OR, US", "lat": 45.5887, "lon": -122.5975, "elevation_m": 11},
+        {"code": "KRDU", "name": "Raleigh-Durham Intl, NC, US", "lat": 35.8776, "lon": -78.7875, "elevation_m": 136},
+        {"code": "KRSN", "name": "Ruston Rgnl, LA, US", "lat": 32.5100, "lon": -92.6428, "elevation_m": 76},
+        {"code": "KSEA", "name": "Seattle-Tacoma Intl, WA, US", "lat": 47.4502, "lon": -122.3088, "elevation_m": 173},
+        {"code": "KSPK", "name": "Spanish Fork Muni, UT, US", "lat": 40.1121, "lon": -111.6559, "elevation_m": 1524},
+        {"code": "KSTL", "name": "St Louis/Lambert Intl, MO, US", "lat": 38.7469, "lon": -90.3700, "elevation_m": 198},
+    ]
     
     stations = {}
     
-    # Try to read existing metar_stations.json to get US stations
-    try:
-        config_path = "config/metar_stations.json"
-        with open(config_path, "r") as f:
-            existing = json.load(f)
-        
-        for station in existing:
-            code = station.get("icao") or station.get("iata")
-            if not code:
-                continue
-            
-            # Only include US stations (K* prefix)
-            if not code.startswith("K"):
-                continue
-            
-            # Check if already in SWOB (shouldn't be for K* codes, but just in case)
-            if code in stations:
-                # Mark as dual-source
-                if "avwx" not in stations[code]["sources_available"]:
-                    stations[code]["sources_available"].append("avwx")
-            else:
-                # New from aviationweather.gov
-                stations[code] = {
-                    "code": code,
-                    "identifiers": {
-                        "icao": code,
-                        "iata": station.get("iata") or "",
-                        "wmo": station.get("wmo_id") or None,
-                        "msc_id": None,
-                        "feature_id": None,
-                        "name": station.get("name") or ""
-                    },
-                    "location": {
-                        "lat": station.get("lat"),
-                        "lon": station.get("lon"),
-                        "elevation_m": station.get("elevation_m")
-                    },
-                    "sources_available": ["avwx"],
-                    "geomet_collections": [],
-                    "station_type": "airport",
-                    "data_provider": "aviationweather.gov",
-                    "country": "USA",
-                    "province_territory": ""
-                }
-        
-        print(f"  Loaded {len(stations)} US stations from existing config", file=sys.stderr)
-        return stations
+    for station_data in US_STATIONS:
+        code = station_data["code"]
+        stations[code] = {
+            "code": code,
+            "identifiers": {
+                "icao": code,
+                "iata": code,
+                "wmo": None,
+                "msc_id": None,
+                "feature_id": None,
+                "name": station_data.get("name", "")
+            },
+            "location": {
+                "lat": station_data.get("lat"),
+                "lon": station_data.get("lon"),
+                "elevation_m": station_data.get("elevation_m")
+            },
+            "sources_available": ["avwx"],
+            "geomet_collections": [],
+            "station_type": "airport",
+            "data_provider": "aviationweather.gov",
+            "country": "USA",
+            "province_territory": ""
+        }
     
-    except FileNotFoundError:
-        print(f"  WARNING: Could not read existing config/metar_stations.json", file=sys.stderr)
-        return stations
+    print(f"  Loaded {len(stations)} US stations from hardcoded list", file=sys.stderr)
+    return stations
 
 
 def merge_stations(swob: Dict[str, dict], avwx: Dict[str, dict]) -> Dict[str, dict]:
