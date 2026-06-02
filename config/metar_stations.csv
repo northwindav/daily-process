@@ -23,7 +23,7 @@ code,name,icao,iata,wmo,msc_id,country,province_territory,lat,lon,station_type,s
 1066,TS MCNABB,1066,1066,,BC_WMB_1066,Canada,BC,49.5855,-123.38722,airport,geomet,MSC
 107,Pine River Gas Plant_60,107,107,,BC_ENV-AQ_107,Canada,BC,55.57,-121.9288,airport,geomet,MSC
 1075,KOOCANUSA,1075,1075,,BC_WMB_1075,Canada,BC,49.04694,-115.22528,airport,geomet,MSC
-108,DEASE LAKE FS,108,108,,BC_WMB_108,Canada,BC,58.4,-130.0,airport,geomet,MSC
+108,DEASE LAKE FS,108,108,,BC_WMB_108,Canada,BC,58.4,-130,airport,geomet,MSC
 1082,MAYSON,1082,1082,,BC_WMB_1082,Canada,BC,51.21111,-120.41197,airport,geomet,MSC
 1083,MEAGER CREEK,1083,1083,,BC_WMB_1083,Canada,BC,50.61972,-123.41,airport,geomet,MSC
 1092,RORY CREEK,1092,1092,,BC_WMB_1092,Canada,BC,50.61262,-116.79332,airport,geomet,MSC
@@ -181,7 +181,7 @@ code,name,icao,iata,wmo,msc_id,country,province_territory,lat,lon,station_type,s
 1A03P,Barkerville,1A03P,1A03P,,BC-ENV-ASW_1A03P,Canada,BC,53.057338,-121.491828,airport,geomet,MSC
 1A05P,Longworth Upper,1A05P,1A05P,,BC-ENV-ASW_1A05P,Canada,BC,53.95083,-121.4431,airport,geomet,MSC
 1A12P,Kaza Lake,1A12P,1A12P,,BC-ENV-ASW_1A12P,Canada,BC,56.0211917,-126.2975972,airport,geomet,MSC
-1A14P,Hedrick Lake,1A14P,1A14P,,BC-ENV-ASW_1A14P,Canada,BC,54.10572,-121.0,airport,geomet,MSC
+1A14P,Hedrick Lake,1A14P,1A14P,,BC-ENV-ASW_1A14P,Canada,BC,54.10572,-121,airport,geomet,MSC
 1A15P,Knudsen Lake,1A15P,1A15P,,BC-ENV-ASW_1A15P,Canada,BC,54.30266,-120.782813,airport,geomet,MSC
 1A17P,Revolution Creek,1A17P,1A17P,,BC-ENV-ASW_1A17P,Canada,BC,53.78422,-120.3752,airport,geomet,MSC
 1A19P,Dome Mountain,1A19P,1A19P,,BC-ENV-ASW_1A19P,Canada,BC,53.626945,-121.016944,airport,geomet,MSC
@@ -468,7 +468,7 @@ code,name,icao,iata,wmo,msc_id,country,province_territory,lat,lon,station_type,s
 412,ELKO,412,412,,BC_WMB_412,Canada,BC,49.28767,-115.15456,airport,geomet,MSC
 414,Courtenay Elementary School,414,414,,BC_ENV-AQ_414,Canada,BC,49.6825,-124.9961,airport,geomet,MSC
 417,TOBY HUB,417,417,,BC_WMB_417,Canada,BC,50.51283,-116.05533,airport,geomet,MSC
-418,Kitimat Yacht Club_60,418,418,,BC_ENV-AQ_418,Canada,BC,54.0,-128.692,airport,geomet,MSC
+418,Kitimat Yacht Club_60,418,418,,BC_ENV-AQ_418,Canada,BC,54,-128.692,airport,geomet,MSC
 419,JOHNSON LAKE,419,419,,BC_WMB_419,Canada,BC,49.922,-115.73667,airport,geomet,MSC
 42091,DRAGON LAKE,42091,42091,,BC_TRAN_42091,Canada,BC,52.93078,-122.43881,airport,geomet,MSC
 42092,HUSH LAKE,42092,42092,,BC_TRAN_42092,Canada,BC,53.158,-122.36442,airport,geomet,MSC
@@ -512,13 +512,13 @@ code,name,icao,iata,wmo,msc_id,country,province_territory,lat,lon,station_type,s
 450,Bessborough 237 Road,450,450,,BC_ENV-AQ_450,Canada,BC,55.791944,-120.483611,airport,geomet,MSC
 45000,ONTARIO TEST 1,,,45000,9400000,Canada,XX,43.3255,-79.799,marine,geomet,Environment and Climate Change Canada (ECCC) in support of Ocean Protection Plan.
 45001,ONTARIO TEST 2,,,45001,9400001,Canada,XX,43.3255,-79.799,marine,geomet,Environment and Climate Change Canada (ECCC) in support of Ocean Protection Plan.
-45002,ATLANTIC TEST 1,,,45002,9300000,Canada,XX,44.7370762423336,-63.6479016571007,marine,geomet,Environment and Climate Change Canada (ECCC) in support of Ocean Protection Plan.
-45003,ATLANTIC TEST 2,,,45003,9300001,Canada,XX,44.7370762423336,-63.6479016571007,marine,geomet,Environment and Climate Change Canada (ECCC) in support of Ocean Protection Plan.
-45004,WINNIPEG TEST 1,,,45004,9400002,Canada,XX,49.8888768486421,-97.1341794150442,marine,geomet,Environment and Climate Change Canada (ECCC) in support of Ocean Protection Plan.
-45005,WINNIPEG TEST 2,,,45005,9400003,Canada,XX,49.8888768486421,-97.1341794150442,marine,geomet,Environment and Climate Change Canada (ECCC) in support of Ocean Protection Plan.
-45006,EDMONTON TEST,,,45006,9400004,Canada,XX,53.5331907561507,-113.413539345478,marine,geomet,Environment and Climate Change Canada (ECCC) in support of Ocean Protection Plan.
-45007,PACIFIC TEST 1,,,45007,9100000,Canada,XX,49.182312054874,-123.078379399749,marine,geomet,Environment and Climate Change Canada (ECCC) in support of Ocean Protection Plan.
-45008,PACIFIC TEST 2,,,45008,9100001,Canada,XX,49.182312054874,-123.078379399749,marine,geomet,Environment and Climate Change Canada (ECCC) in support of Ocean Protection Plan.
+45002,ATLANTIC TEST 1,,,45002,9300000,Canada,XX,44.73707624,-63.64790166,marine,geomet,Environment and Climate Change Canada (ECCC) in support of Ocean Protection Plan.
+45003,ATLANTIC TEST 2,,,45003,9300001,Canada,XX,44.73707624,-63.64790166,marine,geomet,Environment and Climate Change Canada (ECCC) in support of Ocean Protection Plan.
+45004,WINNIPEG TEST 1,,,45004,9400002,Canada,XX,49.88887685,-97.13417942,marine,geomet,Environment and Climate Change Canada (ECCC) in support of Ocean Protection Plan.
+45005,WINNIPEG TEST 2,,,45005,9400003,Canada,XX,49.88887685,-97.13417942,marine,geomet,Environment and Climate Change Canada (ECCC) in support of Ocean Protection Plan.
+45006,EDMONTON TEST,,,45006,9400004,Canada,XX,53.53319076,-113.4135393,marine,geomet,Environment and Climate Change Canada (ECCC) in support of Ocean Protection Plan.
+45007,PACIFIC TEST 1,,,45007,9100000,Canada,XX,49.18231205,-123.0783794,marine,geomet,Environment and Climate Change Canada (ECCC) in support of Ocean Protection Plan.
+45008,PACIFIC TEST 2,,,45008,9100001,Canada,XX,49.18231205,-123.0783794,marine,geomet,Environment and Climate Change Canada (ECCC) in support of Ocean Protection Plan.
 45091,FORT FRASER HILLS,45091,45091,,BC_TRAN_45091,Canada,BC,54.05579,-124.4777,airport,geomet,MSC
 45092,SPENCER PIT,45092,45092,,BC_TRAN_45092,Canada,BC,54.3456,-124.27644,airport,geomet,MSC
 45132,PORT STANLEY,,,45132,9401548,Canada,XX,42.4633,-81.2157,marine,geomet,Environment and Climate Change Canada (ECCC) in support of Ocean Protection Plan.
@@ -575,7 +575,7 @@ code,name,icao,iata,wmo,msc_id,country,province_territory,lat,lon,station_type,s
 47123,BELLA COOLA PRECIP,47123,47123,,BC_TRAN_47123,Canada,BC,52.37055,-126.75435,airport,geomet,MSC
 473,Terrace Skeena Middle School_60,473,473,,BC_ENV-AQ_473,Canada,BC,54.5217,-128.6075,airport,geomet,MSC
 474,FROTH (WIND),474,474,,BC_WMB_474,Canada,BC,52.0105,-119.25502,airport,geomet,MSC
-48021,TUKTOYAKTUK,,,48021,2203915,Canada,XX,70.35,-133.0,marine,geomet,Environment and Climate Change Canada (ECCC) in support of Ocean Protection Plan.
+48021,TUKTOYAKTUK,,,48021,2203915,Canada,XX,70.35,-133,marine,geomet,Environment and Climate Change Canada (ECCC) in support of Ocean Protection Plan.
 491,Squamish Elementary,491,491,,BC_ENV-AQ_491,Canada,BC,49.7052,-123.1513,airport,geomet,MSC
 4A02P,Pine Pass,4A02P,4A02P,,BC-ENV-ASW_4A02P,Canada,BC,55.353,-122.6373333,airport,geomet,MSC
 4A03P,Ware Upper,4A03P,4A03P,,BC-ENV-ASW_4A03P,Canada,BC,57.3961806,-125.7004694,airport,geomet,MSC
@@ -823,7 +823,7 @@ ATMO,Atmore AGDM,ATMO,ATMO,71287,AB-MAI_ATMO,Canada,AB,54.7802,-112.8248,airport
 AUD,Auden,AUD,AUD,,ON-MNRF-AFFES_AUD,Canada,ON,50.2281,-87.8897,airport,geomet,MSC
 AVAL,Acadia Valley AGCM,AVAL,AVAL,71048,AB-MAI_AVAL,Canada,AB,51.0664,-110.3172,airport,geomet,MSC
 AWA,Antler West Auto,AWA,AWA,,AB-MAF_AWA,Canada,AB,54.0898,-119.7988,airport,geomet,MSC
-AZMP-ESG,Eastern South Gulf,AZMP-ESG,AZMP-ESG,4400484,DFO_AZMP-ESG,Canada,QC,46.8,-62.0,airport,geomet,MSC
+AZMP-ESG,Eastern South Gulf,AZMP-ESG,AZMP-ESG,4400484,DFO_AZMP-ESG,Canada,QC,46.8,-62,airport,geomet,MSC
 AZMP-HLX,Halifax,AZMP-HLX,AZMP-HLX,4400487,DFO_AZMP-HLX,Canada,NS,44.267,-63.317,airport,geomet,MSC
 AZMP-STA27,Northwest Atlantic Fisheries Centre Station 27,AZMP-STA27,AZMP-STA27,4400486,DFO_AZMP-STA27,Canada,NL,47.54,-52.588333,airport,geomet,MSC
 AZUR,Azure AGCM,AZUR,AZUR,71981,AB-MAI_AZUR,Canada,AB,50.5119,-114.013,airport,geomet,MSC
@@ -1525,7 +1525,7 @@ CXEA,EAR FALLS (AUT),CXEA,CXEA,71295,6012199,Canada,ON,50.630787,-93.213875,airp
 CXEC,EDMONTON BLATCHFORD,CXEC,CXEC,71157,3012209,Canada,AB,53.586055,-113.509719,airport,geomet,MSC
 CXEG,EDMONTON INTERNATIONAL CS,CXEG,CXEG,71155,3012206,Canada,AB,53.30668,-113.606161,airport,geomet,MSC
 CXEL,EGG ISLAND,CXEL,CXEL,71404,3072246,Canada,AB,58.9814,-110.4395,airport,geomet,MSC
-CXET,EGBERT CS,CXET,CXET,71296,611E001,Canada,ON,44.233,-79.78,airport,geomet,MSC
+CXET,EGBERT CS,CXET,CXET,71296,6.11E+03,Canada,ON,44.233,-79.78,airport,geomet,MSC
 CXFA,FANNY ISLAND,CXFA,CXFA,71568,1022795,Canada,BC,50.453517,-125.992895,airport,geomet,MSC
 CXFB,IQALUIT CLIMATE,CXFB,CXFB,71321,2402592,Canada,NU,63.747809,-68.544293,airport,geomet,MSC
 CXFV,FORT VERMILION,CXFV,CXFV,71024,3072723,Canada,AB,58.3823,-116.0402,airport,geomet,MSC
@@ -1591,7 +1591,7 @@ CYAZ,Tofino,CYAZ,CYAZ,,1038210,Canada,BC,49.0821,-125.772,airport,geomet,NAV CAN
 CYBB,Kugaaruk,CYBB,CYBB,,2303095,Canada,NU,68.5359,-89.8054,airport,geomet,NAV CANADA
 CYBC,Baie-Comeau,CYBC,CYBC,71691,7040444,Canada,QC,49.1325,-68.2044,airport,geomet,NAV CANADA
 CYBD,Bella Coola,CYBD,CYBD,,1060848,Canada,BC,52.3876,-126.596,airport,geomet,NAV CANADA
-CYBG,Bagotville,CYBG,CYBG,71727,7060400,Canada,QC,48.33,-71.0,airport,geomet,
+CYBG,Bagotville,CYBG,CYBG,71727,7060400,Canada,QC,48.33,-71,airport,geomet,
 CYBK,Baker Lake,CYBK,CYBK,71926,2300504,Canada,NU,64.2988,-96.0777,airport,geomet,NAV CANADA
 CYBL,Campbell River,CYBL,CYBL,,1021270,Canada,BC,49.952,-125.273,airport,geomet,NAV CANADA
 CYBQ,Tadoule Lake,CYBQ,CYBQ,71272,5062835,Canada,MB,58.7061,-98.5122,airport,geomet,NAV CANADA
@@ -2059,7 +2059,7 @@ IGN,Ignace,IGN,IGN,,ON-MNRF-AFFES_IGN,Canada,ON,49.4055,-91.6342,airport,geomet,
 ILCR2,Ile a la Crosse (Site 2),ILCR2,ILCR2,,SK-SPSA-WMB_ILCR2,Canada,SK,55.48408,-107.93069,airport,geomet,MSC
 ILF,Island Falls,ILF,ILF,,ON-MNRF-AFFES_ILF,Canada,ON,49.5777,-81.3755,airport,geomet,MSC
 IMA,Imperial Auto,IMA,IMA,,AB-MAF_IMA,Canada,AB,54.4666,-115.5722,airport,geomet,MSC
-IML-10,Old Harry,IML-10,IML-10,,DFO_IML-10,Canada,QC,48.0,-60.5,airport,geomet,MSC
+IML-10,Old Harry,IML-10,IML-10,,DFO_IML-10,Canada,QC,48,-60.5,airport,geomet,MSC
 IML-14,Banc des Orphelins,IML-14,IML-14,,DFO_IML-14,Canada,QC,48.133333,-62.7,airport,geomet,MSC
 IML-7,Gaspe Stream,IML-7,IML-7,4400482,DFO_IML-7,Canada,QC,49.241667,-66.2,airport,geomet,MSC
 IML-BA,American Bank,IML-BA,IML-BA,4400483,DFO_IML-BA,Canada,QC,48.583333,-63.883333,airport,geomet,MSC
@@ -2407,7 +2407,7 @@ RNSTN,Tantallon,RNSTN,RNSTN,,NS-DPW_RNSTN,Canada,NS,44.7106,-63.8999,airport,geo
 RNSTR,Trafalgar,RNSTR,RNSTR,,NS-DPW_RNSTR,Canada,NS,45.288852,-62.65987,airport,geomet,MSC
 RNSVI,Viewmount,RNSVI,RNSVI,,NS-DPW_RNSVI,Canada,NS,45.0861,-64.5313,airport,geomet,MSC
 RNSWA,Waverley,RNSWA,RNSWA,,NS-DPW_RNSWA,Canada,NS,44.80633,-63.60207,airport,geomet,MSC
-RNSWE,Weymouth,RNSWE,RNSWE,,NS-DPW_RNSWE,Canada,NS,44.44,-66.0,airport,geomet,MSC
+RNSWE,Weymouth,RNSWE,RNSWE,,NS-DPW_RNSWE,Canada,NS,44.44,-66,airport,geomet,MSC
 RNSYA,Yarmouth,RNSYA,RNSYA,,NS-DPW_RNSYA,Canada,NS,43.9849,-66.1225,airport,geomet,MSC
 ROBI,Robinson Tower,ROBI,ROBI,,NB-DNRED_ROBI,Canada,NB,47.69666667,-67.18833333,airport,geomet,MSC
 ROLL,Rolling Hills AGCM,ROLL,ROLL,71105,AB-MAI_ROLL,Canada,AB,50.2651,-111.7011,airport,geomet,MSC

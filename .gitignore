@@ -1,3 +1,16 @@
+*gitignore
+
 data/news.json
 data/news_refresh.lock
 scripts/__pycache__/
+
+# Intermediary files to ignore
+DEBUG*
+debug*
+test*
+test_*
+*REVIEW*
+
+# Intermdiate files to eventually remove from .gitignore, but not yet
+msc_geomet_client.py
+config/metar_stations.csv

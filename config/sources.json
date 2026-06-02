@@ -18,7 +18,7 @@
       "why": "Fast first-look satellite view for Canada and surrounding upstream weather, pre-tuned for morning scanning."
     },
     {
-      "id": "animet-rdpa-alerts-lightning",
+      "id": "animet-hrdpa-alerts-lightning",
       "category": "weather",
       "group": "core",
       "region": "Canada",
@@ -32,9 +32,9 @@
       "category": "weather",
       "group": "core",
       "region": "Canada",
-      "label": "AniMet — 500 hPa height, thickness, 3h precip",
-      "url": "https://eccc-msc.github.io/msc-animet/?layers=GDPS.PRES_GZ.500-CONTOUR;0.75;0;1;0;1,GDPS.ETA_DZ-CONTOUR;0.75;0;1;0;1,GDPS.DIAG_PR_PT3H;0.75;0;1;0;1&extent=-22549358,939440,2511850,13784292&overlays=Boundaries&range=80,2,l,PT3H",
-      "description": "AniMet synoptic setup with 500 hPa height, 1000–500 hPa thickness, and 3-hour precipitation.",
+      "label": "AniMet — GDPS 500 hPa height, mslp, 3h precip",
+      "url": "https://eccc-msc.github.io/msc-animet/?layers=GDPS_15km_GeopotentialHeight-Contour_500mb;0.95;1;1;GeopotentialHeight_0to2100dam_6dam-Lines;1,GDPS_15km_Pressure_MSL-Contour;0.95;0;1;SeaLevelPressure_4mb_Color;1,GDPS_15km_Precip-Accum3h;0.65;0;1;0;1&extent=-22549359,939440,2511851,13784292&overlays=Boundaries&play=1&range=80,54,l,PT3H",
+      "description": "AniMet synoptic setup with 500 hPa height, MSLP, and 3-hour precipitation.",
       "why": "Useful for quickly interpreting the larger-scale pattern driving Canadian fire weather."
     },
     {
