@@ -1,4 +1,5 @@
 *gitignore
+.env
 
 data/news.json
 data/news_refresh.lock
