@@ -23,9 +23,9 @@
       "group": "core",
       "region": "Canada",
       "label": "AniMet — RDPA, alerts, lightning, current conditions",
-      "url": "https://eccc-msc.github.io/msc-animet/?layers=HRDPA_2.5km_Precip-Accum24h-T12Z;0.75;0;1;0;1,CURRENT_CONDITIONS;0.75;0;1;0;1,Current-Alerts;0.75;0;1;0;1,Lightning_2.5km_Density;0.75;0;1;0;1,METNOTES;0.75;0;1;0;1&extent=-22549358,939440,2511850,13784292&overlays=Boundaries&range=30,l,l,PT24H",
-      "description": "AniMet blend of 24-hour precipitation, current conditions, alerts, lightning density, and met notes.",
-      "why": "Excellent all-in-one operational overview for active weather and fire-weather context."
+      "url": "https://eccc-msc.github.io/msc-animet/?layers=CURRENT_CONDITIONS;0.75;0;1;0;1,Current-Alerts;0.75;0;1;0;1,METNOTES;0.75;0;1;0;1,HRDPA-Prelim_2.5km_Precip-Accum24h-T12Z;0.75;0;1;0;1,Lightning_2.5km_Density;0.95;1;1;0;1&extent=-21168346,3566989,-3106722,12824279&overlays=Boundaries&range=18,l,l,PT10M",
+      "description": "HRDPA 12Z prelim 24hr precip, current conditions, alerts, and lightning.",
+      "why": ""
     },
     {
       "id": "animet-500hpa-thickness-precip",
